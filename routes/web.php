@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Geozone listing route
+Route::get('/geozones', function (App\Models\Geozone $geozone) {
+    return view('geozones.geozone-list', compact('geozone'));
+})->name('geozones.index');
+
+// Geozone creation route
+Route::get('/create-geozone', function () {
+    return view('geozones.create-geozone');
+})->name('geozones.create');
+
+// Geozone editing route
+Route::get('geozones/{geozone}/edit', function (App\Models\Geozone $geozone) {
+    return view('geozones.edit-geozone', compact('geozone'));
+})->name('geozones.show');
